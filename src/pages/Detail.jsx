@@ -3,6 +3,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../components/Header';
+import {motion} from 'framer-motion';
 
 const data =
 {
@@ -93,34 +94,39 @@ function Detail() {
   }
 
   return (
-    <div>
+    <motion.div
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    exit={{opacity:0}}
+    
+    >
       <Header></Header>
       <div className='container font-roboto'>
-        <div className="grid grid-cols-2 mt-10 w-full h-full grid-rows-1 gap-4">
+        <div className="md:grid grid-cols-2 mt-10 w-full h-full grid-rows-1 gap-4">
             <div className='w-11/12 h-72'>
-              <img src={selectedDish.photo} className='h-72 object-fill w-96 rounded-md shadow-md' alt={selectedDish.name} />
+              <img src={selectedDish.photo} className='h-64 md:h-72 ml-16 md:ml-0 object-fill w-64 md:w-96 rounded-md shadow-md' alt={selectedDish.name} />
             </div>
-            <div className='font-roboto px-3 pr-1 w-full h-auto bg-bg-repice-gray bg-opacity-65 rounded-md shadow-md' >
-              <h2 className='mt-5 uppercase text-center  text-3xl'>{selectedDish.name}</h2>
+            <div className='font-roboto px-3 -mt-8 md:-mt-0 pb-3 md:pb-0 pr-1 w-full h-auto  bg-bg-repice-gray bg-opacity-65 rounded-md shadow-md' >
+              <h2 className='mt-5 uppercase text-center  md:text-3xl'>{selectedDish.name}</h2>
               <p className='mt-2 m-2'>{selectedDish.recipe}.</p>
             </div>
         </div>
-        <div className='flex space-x-8 mt-10 text-center'>
+        <div className='flex space-x-8 mt-10  items-center justify-center text-center'>
           <p className='bg-gray-100 w-auto h-8 pt-1 p-4 rounded-md'>Category</p>
           <p className='bg-green-100 w-auto p-4 h-8 pt-1 whitespace-nowrap rounded-md'>{selectedDish.category}</p>
         </div>
         <div className='mt-4'>
-            <p className='mt-5'>Ingredients:{selectedDish.Ingredients}</p>
+            <p className='mt-5 p-4 md:p-0 text-center'>Ingredients:{selectedDish.Ingredients}</p>
             <p className='mt-6 bg-green-50 p-6 shadow-md'>How to make it  : {selectedDish.making}</p>
           </div>
           <div className='bg-gray-100 w-10/12 mx-auto mt-10 mb-5 h-20 rounded-md shadow-md flex'>
               <img src="https://static-00.iconduck.com/assets.00/person-icon-476x512-hr6biidg.png" className='w-8 h-8 mt-6 ml-4' alt="" />
-              <p className='mt-7 ml-3'>This is a great recipe. I will definitely make it again.</p>
+              <p className='mt-5 md:mt-7 ml-3'>This is a great recipe. I will definitely make it again.</p>
           </div>
           
       </div>
       
-    </div>
+    </motion.div>
   );
 }
 

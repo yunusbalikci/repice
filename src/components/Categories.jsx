@@ -60,7 +60,7 @@ function Categories() {
             <h1 className='text-gray-800 font-bold text-center p-2 text-5xl'>Repices</h1>
         </div>
         <div>
-            <div className='grid grid-cols-3 gap-4 items-center'>
+            <div className='md:grid md:grid-cols-3 gap-4 items-center'>
                 {
                     data.dishes.map((dish, index) => {
                         return (
